@@ -1,0 +1,153 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- mood_great:
+    use_entities: true
+- mood_unhappy:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- admission:
+    #use_entities: true
+entities:
+- name
+slots:
+  first_name&last_name:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  email:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  phone:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  address:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  child_name:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  child_grade:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  acedamicyear:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  dob:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  gaurdian:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  school:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  schooldetails:
+    type: rasa.shared.core.slots.AnySlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  requested_slot:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+responses:
+  utter_ABD:
+  - text: Hello, Welcome to ABD School!!! How can I help you today?
+  utter_greet:
+  - text: Hey! How are you?
+  utter_ask_first_name&last_name:
+  - text: Before we begin, please provide us with your First Name & Last Name.?
+  utter_ask_email:
+  - text: please enter your email
+  utter_ask_phone:
+  - text: Please enter your phone
+  utter_ask_address:
+  - text: May I know your current residing city?
+  utter_ask_child_name:
+  - text: May I know the Child's Name?
+  utter_ask_ child_grade:
+  - text: May I know which Grade are you enquiring for?
+  utter_ask_acedamicyear:
+  - text: Which academic year is the enquiry for?
+  utter_ask_dob:
+  - text: Please enter your Child's Date Of Birth.
+  utter_ask_gaurdian:
+  - text: What is your relationship with the child?
+  utter_ask_school:
+  - text: Would you like to know more about our school?
+  utter_ask_schooldetails:
+  - text: Please select the school to know more about the curriculum offered?Gachibowli/Bachupally/Bengaluru/Vizag/Mohali .
+  utter_parent:
+  - text: Are you a new or an existing parent?
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+actions: []
+forms:
+  school_form:
+    required_slots:
+      acedamicyear:
+      - type: from_text
+      address:
+      - type: from_text
+      child_grade:
+      - type: from_text
+      child_name:
+      - type: from_text
+      dob:
+      - type: from_text
+      email:
+      - type: from_text
+      first_name&last_name:
+      - type: from_text
+      gaurdian:
+      - type: from_text
+      phone:
+      - type: from_text
+      school:
+      - type: from_text
+      schooldetails:
+      - type: from_text
+e2e_actions: []
