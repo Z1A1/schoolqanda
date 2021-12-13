@@ -20,7 +20,7 @@ intents:
 - bot_challenge:
     use_entities: true
 - admission:
-    #use_entities: true
+    use_entities: true
 entities:
 - name
 slots:
