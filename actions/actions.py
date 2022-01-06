@@ -1,15 +1,31 @@
 from typing import Any, Text, Dict, List
+from databaseintegeration import DataUpdate
 #
 from rasa_sdk import Action, Tracker,FormValidationAction
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 #
 # class ValidateNameForm(FormValidationAction):
+class Actionsubmit(Action):
+    def name(self) -> Text:
+
+      return "action_submit"
+    async def run(
+        self, dispatcher, tracker: Tracker, domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+      DataUpdate(tracker.get_slot("acedamicyear"),    
+      tracker.get_slot("address"),tracker.get_slot("child_grade"),
+      tracker.get_slot("child_name"),tracker.get_slot("dob"),tracker.get_slot("email"),tracker.get_slot("first_name_last_name"),tracker.get_slot("gaurdian"),
+      tracker.get_slot("phone"),tracker.get_slot("school"),tracker.get_slot( "schooldetails")) 
+      dispatcher.utter_message("Thanks for the valuable feedback. ")
+      return() 
+
 class ValidateName(FormValidationAction):
 
     def name(self) -> Text:
 
         return "validate_school_form"
+
 
     def validate_first_name_last_name(
         self,
@@ -39,3 +55,18 @@ class ValidateName(FormValidationAction):
        else:
            dispatcher.utter_message(text="Please select current year")
            return {"acedamicyear": None}    
+
+
+   
+ #class ActionHelloWorld(Action):
+#
+    # def name(self) -> Text:
+        # return "action_hello_world"
+#
+    # def run(self, dispatcher: CollectingDispatcher,
+             #tracker: Tracker,
+             #domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+#
+         #dispatcher.utter_message(text="Hello World!")
+#
+        # return []
